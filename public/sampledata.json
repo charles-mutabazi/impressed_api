@@ -1,0 +1,27 @@
+{
+  "place": {
+    "name": "Kobe Institute of Computing",
+    "description": "Kobe Institute of Computing; Graduate School of Information Technology is an IT professional graduate school established in April 2005 aiming to develop people with outstanding specialist capabilities who can play central roles in IT infrastructures. The operating body is Kobe Institute of Computing. It also runs College of Computing.",
+    "address": "2 Chome-2-7 KanochoChuo Ward, Kobe, Hyogo Prefecture 650-0001",
+    "longitude": "135.19314729999996",
+    "latitude": "34.6990292"
+  }
+},
+{
+  "place": {
+    "name": "Sannomiya Station",
+    "description": "Sannomiya Station is the main terminal for Kobe and is approximately 2km east of Kōbe Station. At the beginning of the Meiji period commercial and administrative functions were centred around Kobe Station.",
+    "address": "1-1, Nunobikichō Yonchōme, Chūō, Kobe, Hyogo",
+    "longitude": "135.194942",
+    "latitude": "34.694839"
+  }
+},
+{
+  "place": {
+    "name": "Kobe Harborland",
+    "description": "Kobe Harborland features an array of large-scale commercial sites, from department stores, superstores, and speciality shops to hotels. This new cityscape, with its seaside sightseeing spots, pier, and pedestrian bridge so perfectly suited to its Kobe surroundings, has gained growing popularity among local residents as well as fans of Kobe from around the world.",
+    "address": "1 Chome-7-2 Higashikawasakichō, Chūō-ku, Kōbe-shi, Hyōgo-ken 650-0044, Japan",
+    "longitude": "135.182610",
+    "latitude": "34.679626"
+  }
+}

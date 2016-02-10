@@ -16,7 +16,7 @@ class Place
   # validates_attachment_content_type :post_image, :content_type => /\Aimage\/.*\Z/
 
   validates_presence_of :description, :message => 'This Cannot be Blank'
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 end
 
 class Review

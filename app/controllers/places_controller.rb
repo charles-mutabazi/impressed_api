@@ -10,6 +10,14 @@ class PlacesController < ApplicationController
   def show
     render json: { place: @place }, methods: :reviews
   end
+  
+  def show_reviews
+    @place = Place.find(params[:id])
+    @reviews = @place.reviews
+    
+    render json: { reviews: @reviews }
+    
+  end
 
   def create
     @place = Place.new(place_params)
