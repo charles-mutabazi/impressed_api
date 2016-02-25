@@ -17,6 +17,7 @@ class Place
 
   validates_presence_of :description, :message => 'This Cannot be Blank'
   has_many :reviews, dependent: :destroy
+  has_many :visits, dependent: :destroy
 end
 
 class Review
@@ -29,4 +30,5 @@ class Review
   # field :author, type: String
   field :body, type: String
   belongs_to :place
+  belongs_to :user
 end

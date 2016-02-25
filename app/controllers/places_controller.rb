@@ -1,10 +1,11 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :update, :destroy]
-  # before_action :authenticate_user!
+  before_action :authenticate_admin!, except: [:index]
 
   def index
     @places = Place.all
     render json: { places: @places }, methods: :reviews
+    # render json: @places, methods: :reviews # return a place object not a places object as above
   end
 
   def show

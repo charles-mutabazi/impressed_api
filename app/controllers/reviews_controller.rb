@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
   def show
     place = Place.find(params[:place_id])
     @review = place.reviews.find(params[:id])
-    
+
     render json: {review: @review}, methods: :place_id
   end
 
@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
   def create
     place = Place.find(params[:place_id])
     @review = place.reviews.create(review_params)
-    
+
     if @review.save
       render json: { review: @review }, methods: :place_id, status: :created, location: @review.place #very important
     else
@@ -48,7 +48,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    
+
     head :no_content
   end
 

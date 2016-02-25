@@ -15,17 +15,15 @@ gem 'bson_ext'
 gem 'rack-cors'
 gem 'mongoid_token', '~> 3.0.0' #for more shorter ids 
 gem 'omniauth-google-oauth2', '~> 0.2.10' # OAuth for google
-# gem 'devise' # User authentication
+gem 'devise' # User authentication
 gem 'envyable' #For keeping token add passwords safely
 # gem 'responders', '~> 2.0' # to use respond_with - API
 # gem 'envyable' #For keeping token add passwords safely
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
-gem 'aws-sdk', '~> 1.3.4'
+# gem 'aws-sdk', '~> 1.3.4'
 gem 'rs_voteable_mongo' #for voting
-
-# gem 'devise_token_auth' # Token based authentication for Rails JSON APIs
 gem 'omniauth' # required for devise_token_auth
-# gem 'simple_token_authentication', '~> 1.0' # see semver.org
+gem 'simple_token_authentication', '~> 1.0' # see semver.org
 
 
 # To use ActiveModel has_secure_password
