@@ -6,10 +6,11 @@ class User
   # include Mongo::Voteable
   
   token :field_name => :_id, :length => 6
-  field :name
+  field :display_name
   field :device_uuid
   field :age_range
   field :gender
+  field :ios_version
 
   has_many :visits
   has_many :reviews
