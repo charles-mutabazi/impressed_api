@@ -4,7 +4,7 @@ class PlacesController < ApplicationController
 
   def index
     @places = Place.all
-    render json: { places: @places }, methods: :reviews
+    render json: { places: @places }, methods: [:reviews, :visit_ids]
     # render json: @places, methods: :reviews # return a place object not a places object as above
   end
 
