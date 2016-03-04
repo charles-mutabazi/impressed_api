@@ -18,6 +18,8 @@ class VisitsController < ApplicationController
   # POST /visits
   # POST /visits.json
   def create
+    @device_user = User.find_by device_uuid: user_params[:device_uuid]
+    @visit.user_id = @device_user.id
     @visit = Visit.new(visit_params)
 
     if @visit.save
@@ -54,6 +56,6 @@ class VisitsController < ApplicationController
     end
 
     def visit_params
-      params.require(:visit).permit(:entry_time, :exit_time, :duration, :place_id, :user_id)
+      params.require(:visit).permit(:entry_time, :exit_time, :duration, :place_id)
     end
 end
