@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    old_user = User.find_by device_uuid: user_params[:device_uuid]
+    old_user = User.find(params[:id])
 
     if old_user
       old_user.update(user_params)
