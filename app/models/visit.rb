@@ -6,8 +6,8 @@ class Visit
 
   token :field_name => :_id, :length => 8
 
-  field :entry_time, type: Date
-  field :exit_time, type: Date
+  field :entry_time, type: String
+  field :exit_time, type: String
   field :duration, type: Integer
 
   belongs_to :user
