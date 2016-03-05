@@ -18,7 +18,7 @@ class VisitsController < ApplicationController
   # POST /visits
   # POST /visits.json
   def create
-    current_visit = Visit.find_by entry_time: visit_params[:entry_time]
+    current_visit = Visit.find_by entry_time: visit_params[:time_of_entry]
     
     if current_visit
       current_visit.update(visit_params)
