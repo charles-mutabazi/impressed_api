@@ -18,12 +18,12 @@ class VisitsController < ApplicationController
   # POST /visits
   # POST /visits.json
   def create
-    @visit = Visit.new(visit_params)
     current_visit = Visit.find_by(entry_time: params[:time_of_entry])
-
+    
     if current_visit
       current_visit.update(visit_params)
     else
+      @visit = Visit.new(visit_params)
       if @visit.save
         render json: @visit, status: :created, location: @visit
       else
