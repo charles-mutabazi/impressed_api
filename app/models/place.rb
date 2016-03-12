@@ -21,7 +21,7 @@ class Place
 
   #very important to include image_url
   def image_url_medium
-    image.url(:meduim)
+    image.url(:medium)
   end
 
   def image_url_large
