@@ -4,14 +4,14 @@ class PlacesController < ApplicationController
 
   def index
     @places = Place.all
-    render json: { places: @places }, methods: [:reviews, :visit_ids, :image_url_medium]
+    render json: { places: @places }, methods: [:reviews, :visit_ids, :image_url_large]
     # render json: @places, methods: :reviews # return a place object not a places object as above
   end
 
   def show
     # @place[:image_url_large] = @place.image.url(:large)
     # @place[:image_url_medium] = @place.image.url(:medium)
-    render json: { place: @place }, methods: [:reviews, :image_url_large, :image_url_medium]
+    render json: { place: @place }, methods: [:reviews, :image_url_large, :image_url_large]
   end
   
   def show_reviews
