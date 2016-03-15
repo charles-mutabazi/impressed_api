@@ -13,6 +13,6 @@ class User
   field :gender
   field :ios_version
 
-  has_many :visits
-  has_many :reviews
+  has_many :visits, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 end
