@@ -59,6 +59,13 @@ class VisitsController < ApplicationController
     end
 
     def visit_params
-      params.require(:visit).permit(:entry_time, :exit_time, :duration, :place_id, :user_id)
+      params.require(:visit).permit(
+        :entry_time, 
+        :exit_time, 
+        :duration, 
+        :accuracy, 
+        :user_id, 
+        :longitude, 
+        :latitude)
     end
 end
