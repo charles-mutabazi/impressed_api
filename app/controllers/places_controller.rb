@@ -13,6 +13,11 @@ class PlacesController < ApplicationController
     # @place[:image_url_medium] = @place.image.url(:medium)
     render json: { place: @place }, methods: [:reviews, :image_url_large, :image_url_large]
   end
+
+  def get_place_visit
+    @my_visits = Place.find(params[:place_id]).place_visits
+    render json: @my_visits
+  end
   
   def show_reviews
     @place = Place.find(params[:id])

@@ -1,19 +1,23 @@
 source 'https://rubygems.org'
 
 
-gem 'rails', '4.2.5'
+#gem 'rails', '4.2.5'
+#gem "rails", "~> 3.2.0"
+
+gem 'rails'
 
 gem 'rails-api'
 
 gem 'spring', :group => :development
 
 #for mongoid
-gem 'mongoid', '~> 4.0'
+gem 'mongoid'
+#gem 'mongoid', '~> 5.1.0'
 gem 'bson_ext'
 
 	
 gem 'rack-cors'
-gem 'mongoid_token', '~> 3.0.0' #for more shorter ids 
+gem 'mongoid_token', '~> 4.0.0' #for more shorter ids 
 gem 'omniauth-google-oauth2', '~> 0.2.10' # OAuth for google
 gem 'devise' # User authentication
 gem 'envyable' #For keeping token add passwords safely
@@ -21,7 +25,7 @@ gem 'envyable' #For keeping token add passwords safely
 # gem 'envyable' #For keeping token add passwords safely
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 # gem 'aws-sdk', '~> 1.3.4'
-gem 'rs_voteable_mongo' #for voting
+#gem 'rs_voteable_mongo' #for voting
 gem 'omniauth' # required for devise_token_auth
 gem 'simple_token_authentication', '~> 1.0' # see semver.org
 

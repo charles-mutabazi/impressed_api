@@ -5,13 +5,23 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    render json: { users: @users }, methods: [:visit_ids]
+    render json: { users: @users }
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
     render json: @user
+  end
+
+  def get_user_visits
+    @place_visits = User.find(params[:user_id]).place_visits
+    render json: @place_visits
+  end
+
+  def visits 
+    visits = User.find(params[:user_id]).visits
+    render json: visits
   end
 
   # POST /users

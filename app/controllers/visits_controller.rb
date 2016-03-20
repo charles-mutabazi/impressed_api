@@ -1,12 +1,11 @@
 class VisitsController < ApplicationController
-  before_action :set_visit, only: [:show, :update, :destroy]
+  before_action :set_visit, only: [ :show, :update, :destroy ]
 
   # GET /visits
   # GET /visits.json
   def index
     @visits = Visit.all
-
-    render json: @visits
+    render json: { "all_visits": @visits }
   end
 
   # GET /visits/1
@@ -18,18 +17,9 @@ class VisitsController < ApplicationController
   # POST /visits
   # POST /visits.json
   def create
-    current_visit = Visit.find_by entry_time: visit_params[:entry_time]
+    #@visit = params[:visits]
+    Visit.collection.insert(params[:visits]) #save to batch to database mongoid awesome
     
-    if current_visit
-      current_visit.update(visit_params)
-    else
-      @visit = Visit.new(visit_params)
-      if @visit.save
-        render json: @visit, status: :created, location: @visit
-      else
-        render json: @visit.errors, status: :unprocessable_entity
-      end
-    end
   end
 
   # PATCH/PUT /visits/1
@@ -59,13 +49,6 @@ class VisitsController < ApplicationController
     end
 
     def visit_params
-      params.require(:visit).permit(
-        :entry_time, 
-        :exit_time, 
-        :duration, 
-        :accuracy, 
-        :user_id, 
-        :longitude, 
-        :latitude)
+      params.permit( :entry_time, :exit_time, :accuracy, :user_id, :longitude, :latitude )
     end
 end

@@ -17,6 +17,7 @@ class Place
 
   validates_presence_of :description, :message => 'This Cannot be Blank'
   has_many :reviews, dependent: :destroy
+  #has_many :place_visits, dependent: :destroy
 
   #very important to include image_url
   def image_url_medium
