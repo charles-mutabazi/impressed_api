@@ -17,7 +17,7 @@ class PlaceVisitsController < ApplicationController
   # POST /place_visits
   # POST /place_visits.json
   def create
-    PlaceVisit.collection.insert(params[:place_visits]) #save to batch to database mongoid awesome
+    PlaceVisit.collection.insert_many(params[:place_visits]) #save to batch to database mongoid awesome
   end
 
   # PATCH/PUT /place_visits/1

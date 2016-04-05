@@ -3,9 +3,11 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
+    #@reviews = Review.all
+    #render json: {review: @reviews}
     place = Place.find(params[:place_id])
     @reviews = place.reviews
-    render json: {reviews: @reviews}, methods: :place_id
+    render json: {reviews: @reviews}, methods:  :user
   end
 
   # GET /reviews/1
@@ -59,6 +61,6 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:body)
+      params.require(:review).permit( :body, :user_id, :place_id )
     end
 end

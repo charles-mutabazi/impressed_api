@@ -14,14 +14,22 @@ class UsersController < ApplicationController
     render json: @user
   end
 
+  #/users/1/place_visits
   def get_user_visits
     @place_visits = User.find(params[:user_id]).place_visits
     render json: @place_visits
   end
 
+  #/users/1/visits
   def visits 
     visits = User.find(params[:user_id]).visits
     render json: visits
+  end
+
+  #/users/1/reviews
+  def get_user_reviews
+    reviews = User.find(params[:user_id]).reviews
+    render json: reviews
   end
 
   # POST /users

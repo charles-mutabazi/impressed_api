@@ -5,8 +5,7 @@ class VisitsController < ApplicationController
   # GET /visits.json
   def index
     @visits = Visit.all
-    render json: { "count": @visits.count, "all_visits": @visits }
-   #render json: {"all_visits": @visits} 
+    render json: { "all_visits": @visits }
   end
 
   # GET /visits/1
@@ -19,7 +18,7 @@ class VisitsController < ApplicationController
   # POST /visits.json
   def create
     #@visit = params[:visits]
-    Visit.collection.insert_many(params[:visits]) #save to batch to database mongoid awesome
+    Visit.create(visit_params) #save to batch to database mongoid awesome
     
   end
 
@@ -38,7 +37,9 @@ class VisitsController < ApplicationController
   # DELETE /visits/1
   # DELETE /visits/1.json
   def destroy
+    #visit = Visit.find(params[:id])
     @visit.destroy
+    #render json: visit
 
     head :no_content
   end
@@ -50,6 +51,6 @@ class VisitsController < ApplicationController
     end
 
     def visit_params
-      params.permit( :entry_time, :exit_time, :accuracy, :user_id, :longitude, :latitude )
+      params[].permit([ :entry_time, :exit_time, :accuracy, :user_id, :longitude, :latitude ])
     end
 end
