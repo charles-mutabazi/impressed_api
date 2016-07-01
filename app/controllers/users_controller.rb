@@ -1,11 +1,13 @@
+require 'data_analysis.rb'
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
+
 
   # GET /users
   # GET /users.json
   def index
     @users = User.all
-    render json: { users: @users }
+    render json: { users: @users }, methods: :visit_ids
   end
 
   # GET /users/1
@@ -22,9 +24,11 @@ class UsersController < ApplicationController
 
   #/users/1/visits
   def visits 
-    visits = User.find(params[:user_id]).visits
-    render json: visits
+    @visits = User.find(params[:user_id]).visits
+    render json: @visits
   end
+  
+  
 
   #/users/1/reviews
   def get_user_reviews
@@ -53,7 +57,6 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     @user = User.find(params[:id])
-
     if @user.update(user_params)
       head :no_content
     else
@@ -65,9 +68,63 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user.destroy
-
     head :no_content
   end
+  
+  #Get user analytics
+  def get_user_analytics
+    result_user_v = Array.new
+    result_all_v = Array.new
+    
+    user_visits = User.find(params[:user_id]).visits
+    all_users = User.all
+    all_visits = Visit.all
+    
+    all_users.each do |user|
+      u_visits = User.find(user["device_uuid"]).visits
+      coords = []
+      u_visits.each do |u|
+        lat = u["latitude"]
+        lon = u["longitude"]
+        grid_coords = grid_coords(lat, lon, 300) # accuracy of 300 Meters
+        # user_id = u["user_id"]
+        coords.push(grid_coords)
+      end
+      result_all_v.push([user["device_uuid"], coords.uniq])
+    end
+    
+    similarity = Array.new
+    users = Hash[result_all_v]
+    users.each do |key1, value1|
+      arr = Array.new
+      users.each do |key2, value2|
+        next if(value1==value2)
+        same_places = (value1&value2).size
+        total_places = (value1|value2).size
+        sm = (same_places.to_f/total_places.to_f)*100
+        my_arr = [["user", key2], ["likelihood", sm.round], ["same_places", same_places], ["total_places", total_places]]
+        
+        arr.push(Hash[my_arr])
+      end
+      similarity.push([key1, arr])
+    end
+    
+    user_visits.each do |uv|
+      lat = uv["latitude"]
+      lon = uv["longitude"]
+      grid_coords = grid_coords(lat, lon, 300) # accuracy of 300 Meters
+      result_user_v.push(grid_coords)
+    end
+    
+    # comparision = Hash.new
+    my_hash = Hash[similarity].slice(params[:user_id]).values[0]
+    render json: {
+      # grid_coordinates: result_user_v.uniq,
+      visits_300m_acc: result_user_v.uniq.size,
+      comparision: my_hash #to remain with the current user comparision
+    }
+  end
+
 
   private
 

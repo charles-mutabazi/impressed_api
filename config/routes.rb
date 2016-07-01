@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'visits', to: :visits
     get 'place_visits', to: :get_user_visits
     get 'reviews', to: :get_user_reviews
+    get 'analytics', to: :get_user_analytics
   end
   
   resources :places, except: [:new, :edit] do
