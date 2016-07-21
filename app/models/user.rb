@@ -14,6 +14,6 @@ class User
   field :ios_version
 
   has_many :visits, dependent: :destroy
-  has_many :reviews
-  has_many :place_visits
+  has_many :reviews, dependent: :destroy
+  has_many :place_visits, dependent: :destroy
 end
